@@ -3,6 +3,17 @@
     "{49bd4b24-e5b9-4238-a241-3487486f9236}": {
       "updates": [
         {
+          "version": "1.0.3",
+          "update_link": "https://github.com/jakwings/firefox-screenshot/raw/update/infinite_screenshots-1.0.3-fx.xpi",
+          "update_hash": "sha256:2bd40be1905064d0e73592f887f62a782614bc49461e173f5a9e1293a5231f5d",
+          "update_info_url": "https://github.com/jakwings/firefox-screenshot/raw/update/update.html",
+          "applications": {
+            "gecko": {
+              "strict_min_version": "56.0"
+            }
+          }
+        },
+        {
           "version": "1.0.1",
           "update_link": "https://github.com/jakwings/firefox-screenshot/raw/update/infinite_screenshots-1.0.1-fx.xpi",
           "update_hash": "sha256:fb9b4b7e2f7d7e4772a10ea571ff8df942497f1027984f4da5b959d68d0dcd70",

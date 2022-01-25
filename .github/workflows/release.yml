@@ -1,0 +1,49 @@
+# https://github.com/actions/cache
+# https://github.com/actions/checkout
+# https://github.com/ncipollo/release-action
+# https://docs.github.com/actions/using-workflows
+
+name: GitHub Release
+
+on:
+  push:
+    branches:
+      - update
+
+jobs:
+  release:
+    if: github.repository == 'jakwings/firefox-screenshot'
+    name: Upload Artifacts
+    runs-on: ubuntu-latest
+    steps:
+      - name: Clone repository
+        uses: actions/checkout@v2
+        with:
+          persist-credentials: false
+      - name: Create release note
+        run: |
+          sed -n '
+            /^<pre>$/, /^<\/pre>$/ {
+              s/^<pre>$/```/
+              s/^<\/pre>$/```/
+              p
+            }
+          ' >update.md <update.html
+      - name: Create GitHub release
+        uses: ncipollo/release-action@v1
+        with:
+          token: ${{ github.token }}
+          allowUpdates: true
+          artifactErrorsFailBuild: true
+          removeArtifacts: true
+          replacesArtifacts: true
+          tag: latest
+          name: Downloads
+          bodyFile: update.md
+          artifacts: 'infinite_screenshots-*.xpi'
+          artifactContentType: raw
+          omitNameDuringUpdate: false
+          omitBodyDuringUpdate: false
+          omitPrereleaseDuringUpdate: false
+          draft: false
+          prerelease: false

@@ -1,0 +1,21 @@
+{
+  "addons": {
+    "{49bd4b24-e5b9-4238-a241-3487486f9236}": {
+      "updates": [
+        {
+          "version": "1.0.0",
+          "update_link": "https://github.com/jakwings/firefox-screenshot/raw/update/infinite_screenshots-1.0.0-fx.xpi",
+          "update_hash": "sha256:9da87fd6f04fc08885b20d9189953fde518d985bdf2be49e9310e83d9ed38317",
+          "update_info_url": "https://github.com/jakwings/firefox-screenshot/raw/update/update.html",
+          "applications": {
+            "gecko": {
+              "strict_min_version": "56.0",
+              "strict_max_version": "*",
+              "advisory_max_version": "*"
+            }
+          }
+        }
+      ]
+    }
+  }
+}

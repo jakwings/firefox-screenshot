@@ -1,0 +1,33 @@
+name: GitHub Release
+
+on:
+  push:
+    branches: update
+
+jobs:
+  build:
+    name: Upload Artifacts
+    runs-on: ubuntu-latest
+    steps:
+      - name: Clone repository
+        uses: actions/checkout@v2
+        with:
+          persist-credentials: false
+      - name: Create GitHub release
+        id: create_release
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        with:
+          tag_name: latest
+          release_name: infinite_screenshots-latest.xpi
+          prerelease: false
+      - name: Upload Firefox Extension
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: infinite_screenshots-latest.xpi
+          asset_name: infinite_screenshots-latest.xpi
+          asset_content_type: application/octet-stream
